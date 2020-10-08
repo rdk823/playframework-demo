@@ -1,0 +1,48 @@
+# Deployment
+ci_deploy.json
+shot.yaml
+
+## Play put these things here
+logs
+target
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+
+## These are ones that I have added from other projects
+# Scala
+*.class
+*.log
+
+# SBT
+.cache/
+.history/
+.lib
+dist
+target
+lib_managed
+src_managed
+project/project
+project/target
+project/.sbtserver*
+.sbtserver
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea
+out
+
+# OSX
+.DS_Store
+
+# Lucene indexes
+index/
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
