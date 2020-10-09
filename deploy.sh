@@ -6,11 +6,11 @@ REPOSITORY_URI=${AWS_ECR_ACCOUNT_ID}.dkr.ecr.${AWS_ECR_REGION}.amazonaws.com/${P
 
 GIT_SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-7)
 
-docker tag api:1.0.0 ${REPOSITORY_URI}:${GIT_SHORT_SHA}
+docker tag api:1.0.0 ${REPOSITORY_URI}:$GIT_SHORT_SHA
 
 docker tag api:1.0.0 ${REPOSITORY_URI}:latest
 
-docker push ${REPOSITORY_URI}:${GIT_SHORT_SHA}
+docker push ${REPOSITORY_URI}:$GIT_SHORT_SHA
 
 docker push ${REPOSITORY_URI}:latest
 
