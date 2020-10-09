@@ -27,6 +27,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Push Docker image
+      if: startsWith(github.event.head_commit.message, 'DEPLOY')
       timeout-minutes: 20
       env:
         PROJECT: 'fettch'
