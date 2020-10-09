@@ -1,0 +1,31 @@
+name: Play Framework Demo CI
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+        java-package: jdk
+        architecture: x64
+    - name: Test with SBT
+      run: sbt test
+    - name: Create docker image with SBT
+      run: sbt docker:publishLocal
+    - name: Push Docker image
+      timeout-minutes: 20
+      env:
+        PROJECT: 'fettch'
+        APPLICATION_NAME: 'playframework-demo'
+        AWS_ECR_ACCOUNT_ID: ${{ secrets.AwsAccountId }}
+        AWS_ECR_REGION: 'us-east-1'
+        AWS_ACCESS_KEY_ID: ${{ secrets.AwsAccessKeyId }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AwsSecretAccessKey }}
+        AWS_DEFAULT_REGION: 'us-east-1'
+        AWS_DEFAULT_OUTPUT: 'json'
+      run: ./deploy.sh
+        
