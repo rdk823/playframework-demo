@@ -14,8 +14,14 @@ jobs:
         architecture: x64
     - name: Test with SBT
       run: sbt test
+  build-image:
+    runs-on: ubuntu-latest
+    steps:
     - name: Create docker image with SBT
       run: sbt docker:publishLocal
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
     - name: Push Docker image
       timeout-minutes: 20
       env:
