@@ -23,4 +23,4 @@ The `test` and `build-image` jobs are triggered each time there is a `push` even
 
 - After a few minute visit `http://www.yourdomain.tld` and it will display `Application is up and running`
 
-- Health check endpoint - GET Request to http://http://www.yourdomain.tld/health - Response : `{"Status":"up"}`
+- Health check endpoint - GET Request to http://www.yourdomain.tld/health - Response : `{"Status":"up"}`
