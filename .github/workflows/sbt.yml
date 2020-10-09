@@ -18,12 +18,14 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v1
     - name: Create docker image with SBT
       run: sbt docker:publishLocal
   deploy:
     needs: build-image
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v1
     - name: Push Docker image
       timeout-minutes: 20
       env:
